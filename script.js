@@ -47,11 +47,20 @@ nums.forEach((num) => {
             displayValue = "";
             num1 = ""; //clear num1 so that we know that num1 is being created again through displayValue
         }
-        displayValue = "" + displayValue + num.value;
-        display.textContent = displayValue;
-
+        if (num.id == "."){ //to make sure that only 1 decimal point is allowed
+            if (displayValue.includes(".")){ 
+                display.textContent = displayValue;
+            }
+            else {
+                displayValue = "" + displayValue + num.value;
+                display.textContent = displayValue;}
+        }
+        else{
+            displayValue = "" + displayValue + num.value;
+            display.textContent = displayValue;}
     });    
 });
+
 
 let operand;
 
@@ -105,3 +114,15 @@ del.addEventListener("click", () => {
     displayValue = displayValue.slice(0,-1); //removing the last number in the string. only can edit the values u keyed in, cannot alter answer returned
     display.textContent = displayValue;
 })
+
+//SUPPORT FOR KEYBOARD INPUT -- not done yet still dk why event get cancelled out 
+
+// document.addEventListener("keydown", (e) => {
+//     if (e.key == "." || (e.key >= 0 && e.key <= 9)) {
+//       e.preventDefault();
+//       document.querySelector(e.key).click();
+//     } else if (e.key == "Enter" || e.key == "=") {
+//       e.preventDefault();
+//       document.querySelector("#equals").click();
+//     }
+// });

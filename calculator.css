@@ -8,12 +8,12 @@ button{
   cursor: pointer;
   display: inline-block;
   font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 14px;
+  font-size: 40px;
   font-weight: 500;
-  line-height: 20px;
+  line-height: 50px;
   list-style: none;
   margin: 0;
-  padding: 10px 12px;
+  padding: 20px 25px;
   text-align: center;
   transition: all 200ms;
   vertical-align: baseline;
@@ -21,4 +21,32 @@ button{
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
+
+}
+
+body{
+  color:black;
+  justify-content: center;
+  align-content:center;
+  display:flex;
+  flex-direction: row;
+}
+
+.container{
+  display:flex;
+  flex-direction: column;
+  width: 50%;
+  align-content: space-around;
+  background-color: white;
+  min-height: 50vh;
+  border: 25px;
+}
+
+.numcontainer{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.display{
+  flex: 1
 }
