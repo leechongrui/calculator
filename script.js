@@ -43,7 +43,7 @@ display.textContent = num1; //display will show "0" at the start
 const nums = document.querySelectorAll(".nums"); 
 nums.forEach((num) => {
     num.addEventListener("click" , () =>{
-        if (num1 == "0"){ //first input into calc
+        if (num1 == "0" || displayValue == "restart"){ //first input into calc as well as restarting after finished operation
             displayValue = "";
             num1 = ""; //clear num1 so that we know that num1 is being created again through displayValue
         }
@@ -62,7 +62,7 @@ operations.forEach((operation) => {
             operand = operation.textContent;
             num1 = displayValue; //update num1
             displayValue="";} //change display value to nothing so can store num2
-        else if (num1 !== "" && displayValue !== ""){ //means this acts as a equal sign now and u must operate
+        else if (num1 !== "" && displayValue !== "" && displayValue !== "restart"){ //means this acts as a equal sign now and u must operate
             num1 = parseFloat(num1); //change string to float
             num2 = parseFloat(displayValue);
             let answer= operate(num1,operand,num2);
@@ -71,8 +71,9 @@ operations.forEach((operation) => {
             operand = operation.textContent;
             displayValue = "";
         }
-        else if(num1 !=="" && num2 == ""){
+        else if(num1 !=="" && displayValue == "restart"){
             operand = operation.textContent;
+            displayValue ="";
         }
     })
 })
@@ -93,8 +94,8 @@ equals.addEventListener("click", () => {
     num2 = parseFloat(displayValue);
     let answer = operate(num1, operand, num2);
     display.textContent = answer;
-    displayValue = "";
-    num1 = answer;
+    displayValue = "restart";
+    num1 = answer; //if straight away press another operand, it will work
     num2 = "";
     operand = "";
 });
@@ -104,4 +105,3 @@ del.addEventListener("click", () => {
     displayValue = displayValue.slice(0,-1); //removing the last number in the string. only can edit the values u keyed in, cannot alter answer returned
     display.textContent = displayValue;
 })
-
